@@ -1,13 +1,14 @@
+const { Double } = require("mongodb");
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const productSchema = new Schema({
 
-    shortName : {
+    title : {
         type : String,
         required: true
     },
-    longName : {
+    description : {
         type : String,
         required: true
     },
@@ -22,6 +23,18 @@ const productSchema = new Schema({
     price : {
         type : Number,
         required : true
+    },
+    images : {
+        type : [String],
+        required: true
+    },
+    sizes : {
+        type : [String],
+        required: true
+    },
+    colors : {
+        type : [String],
+        required: true
     },
     dateAdded : {
         type : String,

@@ -3,20 +3,26 @@ let Product = require("../models/Product");
 
 //create route to create a product
 router.route("/").post((req,res) => {
-    const shortName = req.body.shortName;
-    const longName = req.body.longName;
+    const title = req.body.title;
+    const description = req.body.description;
     const category = req.body.category;
     const gender = req.body.gender;
     const price = Number(req.body.price);
+    const images = req.body.images
+    const sizes = req.body.sizes
+    const colors = req.body.colors
     const dateAdded = req.body.dateAdded
 
 
     const newProduct = new Product({
-        shortName,
-        longName,
+        title,
+        description,
         category,
         gender,
         price,
+        images,
+        sizes,
+        colors,
         dateAdded
     })
 
@@ -56,14 +62,17 @@ router.route("/:id").get(async (req,res) =>{
 //update product by id
 router.route("/:id").put(async (req,res) => {
     let productID = req.params.id;
-    const{shortName, longName, category, gender, price, dateAdded} = req.body;
+    const{title, description, category, gender, price, images, sizes, colors, dateAdded} = req.body;
 
     const updateProduct = {
-        shortName,
-        longName,
+        title,
+        description,
         category,
         gender,
         price,
+        images,
+        sizes,
+        colors,
         dateAdded
     }
 
